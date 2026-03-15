@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SSCVEERS | Current Affairs MCQ | 14–15 March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0F2A52;
+    --teal: #0E7C7B;
+    --gold: #F4A623;
+    --red: #E63946;
+    --green: #2DC653;
+    --light: #F0F4FA;
+    --card: #FFFFFF;
+    --text: #1C2B3A;
+    --muted: #7A8FA6;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(145deg, #0F2A52 0%, #0E7C7B 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  /* ── SCREENS ── */
+  .screen { display: none; }
+  .screen.active { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+
+  /* ── HOME ── */
+  #home-screen {
+    min-height: 100vh;
+  }
+  .home-card {
+    background: white;
+    border-radius: 24px;
+    padding: 36px 32px 28px;
+    max-width: 460px;
+    width: 100%;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+    text-align: center;
+    animation: slideUp .5s cubic-bezier(.22,.68,0,1.2) both;
+  }
+  .logo-ring {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--teal));
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 30px;
+    box-shadow: 0 8px 24px rgba(14,124,123,.35);
+  }
+  .brand { font-size: 11px; font-weight: 900; letter-spacing: 4px; color: var(--gold); margin-bottom: 4px; }
+  .home-title { font-size: 26px; font-weight: 900; color: var(--navy); line-height: 1.15; margin-bottom: 4px; }
+  .home-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+
+  .filter-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 22px; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 8px 20px;
+    border-radius: 24px;
+    border: 2px solid #D0DCE8;
+    background: white;
+    color: var(--muted);
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px; font-weight: 800;
+    cursor: pointer; transition: all .2s;
+  }
+  .filter-btn.active {
+    background: var(--navy); border-color: var(--navy);
+    color: white;
+    box-shadow: 0 4px 14px rgba(15,42,82,.3);
+  }
+
+  .stats-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    background: var(--light); border-radius: 14px; padding: 16px; margin-bottom: 22px;
+  }
+  .stat-item { text-align: center; }
+  .stat-icon { font-size: 22px; }
+  .stat-label { font-size: 10px; color: var(--muted); font-weight: 700; margin-top: 2px; }
+  .stat-val { font-size: 16px; font-weight: 900; color: var(--navy); }
+
+  .start-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: var(--radius);
+    border: none;
+    background: linear-gradient(135deg, var(--navy), var(--teal));
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px; font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(14,124,123,.4);
+    transition: transform .15s, box-shadow .15s;
+    letter-spacing: .5px;
+  }
+  .start-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(14,124,123,.5); }
+  .tg-link { font-size: 11px; color: var(--muted); margin-top: 14px; }
+  .tg-link a { color: var(--teal); font-weight: 800; text-decoration: none; }
+
+  /* ── QUIZ ── */
+  #quiz-screen { min-height: 100vh; }
+  .quiz-wrap {
+    max-width: 560px; width: 100%;
+    animation: fadeIn .35s ease both;
+  }
+
+  /* top bar */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .topbar-brand { font-size: 11px; font-weight: 900; letter-spacing: 3px; color: rgba(255,255,255,.75); }
+  .badges { display: flex; gap: 8px; }
+  .badge {
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 11px; font-weight: 800;
+    border: 1px solid rgba(255,255,255,.2);
+  }
+  .badge.score { background: rgba(244,166,35,.2); border-color: var(--gold); color: var(--gold); }
+
+  /* progress */
+  .progress-bar-outer {
+    height: 6px; background: rgba(255,255,255,.2); border-radius: 6px;
+    margin-bottom: 18px; overflow: hidden;
+  }
+  .progress-bar-inner {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), #FFD166);
+    border-radius: 6px;
+    transition: width .5s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* card */
+  .quiz-card {
+    background: white;
+    border-radius: 22px;
+    padding: 24px 22px;
+    box-shadow: 0 24px 64px rgba(0,0,0,.28);
+  }
+
+  /* pills row */
+  .pills-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .pill {
+    padding: 4px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 800;
+    border: 1.5px solid currentColor;
+  }
+  .pill-date { background: #0F2A52; color: white; border-color: #0F2A52; }
+
+  /* question box */
+  .q-box {
+    background: var(--light);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 18px;
+    border-left: 4px solid var(--teal);
+  }
+  .q-num { font-size: 10px; font-weight: 900; color: var(--teal); letter-spacing: 2px; margin-bottom: 6px; }
+  .q-text { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.65; }
+
+  /* options */
+  .options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+  .opt-btn {
+    display: flex; align-items: center; gap: 12px;
+    padding: 13px 16px; border-radius: 13px;
+    border: 2px solid #E2EAF4;
+    background: white; color: var(--text);
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px; font-weight: 600;
+    cursor: pointer; text-align: left;
+    transition: all .18s; line-height: 1.4;
+  }
+  .opt-btn:hover:not(.disabled) { border-color: var(--teal); background: #F0FAF9; color: var(--navy); }
+  .opt-btn.selected { border-color: var(--teal); background: #E8F7F7; color: var(--navy); font-weight: 800; }
+  .opt-btn.correct { border-color: var(--green); background: #EAFBEF; color: #1A6B35; font-weight: 800; }
+  .opt-btn.wrong { border-color: var(--red); background: #FEE8E6; color: #B71C1C; }
+  .opt-btn.dimmed { border-color: #F0F0F0; background: #FAFAFA; color: #BBB; }
+  .opt-btn.disabled { cursor: default; }
+
+  .letter-circle {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #EEF2F7; color: var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 900; flex-shrink: 0;
+    transition: all .18s;
+  }
+  .opt-btn.selected .letter-circle { background: var(--teal); color: white; }
+  .opt-btn.correct .letter-circle { background: var(--green); color: white; }
+  .opt-btn.wrong .letter-circle { background: var(--red); color: white; }
+  .opt-btn.dimmed .letter-circle { background: #F0F0F0; color: #CCC; }
+
+  /* explanation */
+  .explanation {
+    background: linear-gradient(135deg, #EAFBF1, #E0F7EC);
+    border: 1.5px solid #A9DFBF;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    animation: fadeIn .3s ease both;
+  }
+  .expl-label { font-size: 10px; font-weight: 900; color: #1E8449; letter-spacing: 2px; margin-bottom: 6px; }
+  .expl-text { font-size: 12px; color: #2C3E50; line-height: 1.65; font-weight: 600; }
+
+  /* action buttons */
+  .action-row { display: flex; gap: 10px; }
+  .action-btn {
+    flex: 1; padding: 14px;
+    border-radius: 13px; border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px; font-weight: 800;
+    cursor: pointer; transition: all .18s;
+    letter-spacing: .3px;
+  }
+  .btn-submit {
+    background: linear-gradient(135deg, var(--navy), var(--teal));
+    color: white;
+    box-shadow: 0 6px 20px rgba(14,124,123,.35);
+  }
+  .btn-submit:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(14,124,123,.45); }
+  .btn-submit:disabled { background: #D0DCE8; color: #A0B0C0; cursor: not-allowed; box-shadow: none; transform: none; }
+  .btn-next {
+    background: linear-gradient(135deg, var(--teal), var(--navy));
+    color: white;
+    box-shadow: 0 6px 20px rgba(15,42,82,.35);
+  }
+  .btn-next:hover { transform: translateY(-1px); }
+
+  .quiz-footer { font-size: 10px; color: rgba(255,255,255,.45); text-align: center; margin-top: 14px; }
+
+  /* ── RESULTS ── */
+  #result-screen { min-height: 100vh; }
+  .result-card {
+    background: white; border-radius: 24px;
+    padding: 32px 28px 24px;
+    max-width: 520px; width: 100%;
+    box-shadow: 0 32px 80px rgba(0,0,0,.35);
+    animation: slideUp .5s cubic-bezier(.22,.68,0,1.2) both;
+  }
+  .result-top { text-align: center; margin-bottom: 24px; }
+  .trophy { font-size: 56px; margin-bottom: 10px; }
+  .result-title { font-size: 22px; font-weight: 900; color: var(--navy); }
+  .score-big { font-size: 52px; font-weight: 900; line-height: 1; }
+  .grade-label { font-size: 15px; font-weight: 800; margin-top: 4px; }
+  .pct-badge {
+    display: inline-block;
+    background: var(--light); border-radius: 8px;
+    padding: 6px 20px; margin-top: 10px;
+    font-size: 18px; font-weight: 900; color: var(--navy);
+  }
+
+  .review-section { margin-bottom: 20px; }
+  .review-title { font-size: 11px; font-weight: 900; color: var(--muted); letter-spacing: 2px; margin-bottom: 10px; }
+  .review-list { max-height: 300px; overflow-y: auto; border-radius: 12px; border: 1.5px solid #E0EAF4; }
+  .review-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #F4F6F8;
+    background: white;
+  }
+  .review-item:last-child { border-bottom: none; }
+  .review-item.correct-item { background: #F4FFF8; }
+  .review-item.wrong-item { background: #FFF5F5; }
+  .review-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .review-meta { font-size: 9px; font-weight: 800; color: var(--muted); margin-bottom: 2px; }
+  .review-q { font-size: 11px; color: var(--text); line-height: 1.4; font-weight: 600; }
+  .review-correct-ans { font-size: 10px; color: #1E8449; font-weight: 800; margin-top: 3px; }
+
+  .result-btns { display: flex; gap: 10px; }
+  .btn-retry {
+    flex: 1; padding: 13px; border-radius: 13px; border: none;
+    background: linear-gradient(135deg, var(--navy), var(--teal));
+    color: white; font-family: 'Nunito', sans-serif;
+    font-size: 13px; font-weight: 800; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(14,124,123,.3);
+  }
+  .btn-home {
+    flex: 1; padding: 13px; border-radius: 13px;
+    border: 2.5px solid var(--navy); background: white;
+    color: var(--navy); font-family: 'Nunito', sans-serif;
+    font-size: 13px; font-weight: 800; cursor: pointer;
+  }
+
+  /* ── TOPIC COLOURS ── */
+  .topic-Defence    { background: #EBF5FB; color: #1A5276; border-color: #2E86C1; }
+  .topic-Economy    { background: #FEF9E7; color: #7D6608; border-color: #F1C40F; }
+  .topic-Sports     { background: #FDEDEC; color: #922B21; border-color: #E74C3C; }
+  .topic-GITag      { background: #E9F7EF; color: #1E8449; border-color: #27AE60; }
+  .topic-Schemes    { background: #E8F8F5; color: #0E6655; border-color: #1ABC9C; }
+  .topic-Literacy   { background: #EAF2FF; color: #1A3C8E; border-color: #3498DB; }
+  .topic-Science    { background: #F2F3F4; color: #2C3E50; border-color: #95A5A6; }
+  .topic-Polity     { background: #F5EEF8; color: #6C3483; border-color: #9B59B6; }
+  .topic-National   { background: #D6EAF8; color: #154360; border-color: #2980B9; }
+  .topic-IntDays    { background: #E8EAF6; color: #283593; border-color: #5C6BC0; }
+  .topic-Awards     { background: #FFF3E0; color: #B7770D; border-color: #F39C12; }
+  .topic-Governance { background: #E8F5E9; color: #1B5E20; border-color: #4CAF50; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes popIn {
+    0%   { transform: scale(.8); opacity: 0; }
+    70%  { transform: scale(1.08); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .pop { animation: popIn .4s cubic-bezier(.22,.68,0,1.2) both; }
+
+  /* scrollbar */
+  .review-list::-webkit-scrollbar { width: 5px; }
+  .review-list::-webkit-scrollbar-track { background: #F0F4FA; }
+  .review-list::-webkit-scrollbar-thumb { background: #C0D0E0; border-radius: 4px; }
+
+  @media (max-width: 480px) {
+    .home-card, .result-card { padding: 26px 18px 20px; }
+    .q-text { font-size: 13px; }
+    .opt-btn { font-size: 12px; padding: 11px 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ HOME ═══════════════ -->
+<div id="home-screen" class="screen active">
+  <div class="home-card">
+    <div class="logo-ring">📚</div>
+    <div class="brand">SSCVEERS</div>
+    <h1 class="home-title">Current Affairs MCQ</h1>
+    <p class="home-sub">14 &amp; 15 March 2026 &nbsp;|&nbsp; SSC CGL 2026</p>
+
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="setFilter('All')">All (20)</button>
+      <button class="filter-btn" onclick="setFilter('14 Mar')">14 Mar (10)</button>
+      <button class="filter-btn" onclick="setFilter('15 Mar')">15 Mar (10)</button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-icon">📝</div>
+        <div class="stat-label">Questions</div>
+        <div class="stat-val" id="home-qcount">20</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">💡</div>
+        <div class="stat-label">Explanations</div>
+        <div class="stat-val">Every Q</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">📌</div>
+        <div class="stat-label">Static GK</div>
+        <div class="stat-val">Linked</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-label">Score Card</div>
+        <div class="stat-val">✓</div>
+      </div>
+    </div>
+
+    <button class="start-btn" onclick="startQuiz()">Start Quiz →</button>
+    <p class="tg-link">📲 <a href="https://t.me/sscveers" target="_blank">t.me/sscveers</a> &nbsp;|&nbsp; Daily PDFs &bull; MCQs &bull; Notes</p>
+  </div>
+</div>
+
+<!-- ═══════════════ QUIZ ═══════════════ -->
+<div id="quiz-screen" class="screen">
+  <div class="quiz-wrap">
+    <div class="topbar">
+      <span class="topbar-brand">SSCVEERS</span>
+      <div class="badges">
+        <span class="badge score" id="score-badge">🏆 0 pts</span>
+        <span class="badge" id="progress-badge">1/20</span>
+      </div>
+    </div>
+
+    <div class="progress-bar-outer">
+      <div class="progress-bar-inner" id="progress-bar" style="width:0%"></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="pills-row">
+        <span class="pill pill-date" id="q-date">14 Mar</span>
+        <span class="pill" id="q-topic">Topic</span>
+      </div>
+
+      <div class="q-box">
+        <div class="q-num" id="q-num">QUESTION 1 OF 20</div>
+        <div class="q-text" id="q-text">Question text here</div>
+      </div>
+
+      <div class="options" id="options-container"></div>
+
+      <div class="explanation" id="explanation" style="display:none">
+        <div class="expl-label">💡 EXPLANATION &amp; STATIC GK</div>
+        <div class="expl-text" id="expl-text"></div>
+      </div>
+
+      <div class="action-row">
+        <button class="action-btn btn-submit" id="submit-btn" onclick="submitAnswer()" disabled>Submit Answer</button>
+        <button class="action-btn btn-next" id="next-btn" onclick="nextQuestion()" style="display:none">Next →</button>
+      </div>
+    </div>
+    <div class="quiz-footer">📲 t.me/sscveers &nbsp;|&nbsp; SSCVEERS © 2026</div>
+  </div>
+</div>
+
+<!-- ═══════════════ RESULTS ═══════════════ -->
+<div id="result-screen" class="screen">
+  <div class="result-card">
+    <div class="result-top">
+      <div class="trophy" id="trophy-emoji">🏆</div>
+      <h2 class="result-title">Quiz Complete!</h2>
+      <div class="score-big" id="score-big" style="color:#0E7C7B">0/20</div>
+      <div class="grade-label" id="grade-label"></div>
+      <div class="pct-badge" id="pct-badge">0%</div>
+    </div>
+
+    <div class="review-section">
+      <div class="review-title">ANSWER REVIEW</div>
+      <div class="review-list" id="review-list"></div>
+    </div>
+
+    <div class="result-btns">
+      <button class="btn-retry" onclick="retryQuiz()">🔄 Retry</button>
+      <button class="btn-home" onclick="goHome()">🏠 Home</button>
+    </div>
+    <p class="tg-link" style="text-align:center;margin-top:14px">📲 <a href="https://t.me/sscveers" target="_blank">t.me/sscveers</a></p>
+  </div>
+</div>
+
+<script>
+const ALL_QUESTIONS = [
+  // ── 14 March ──
+  { date:"14 Mar", topic:"Defence",
+    q:"Who was appointed as the first female Head of Operations for Kaiga Nuclear Power Plant?",
+    opts:["Kalpana Chawla","R.M. Nachimuthu","Tessy Thomas","Muthayya Vanitha"], ans:1,
+    expl:"R.M. Nachimuthu (Tamil Nadu, 35 yrs experience) appointed by NPCIL for Units 3 & 4 of Kaiga NPP, Karnataka. Term began 15 March 2026. NPCIL = Nuclear Power Corporation of India Ltd." },
+  { date:"14 Mar", topic:"Economy",
+    q:"Which states topped the 'Achiever' category in NITI Aayog's Fiscal Health Index 2026?",
+    opts:["Gujarat & Maharashtra","Odisha & Goa","Karnataka & Tamil Nadu","UP & Bihar"], ans:1,
+    expl:"NITI Aayog FHI 2026: Achievers = Odisha & Goa | Front Runners = Gujarat, UP | Performer = MP, Haryana, Bihar, Rajasthan | Aspirational = West Bengal. NITI Aayog est. 2015, Chairperson = PM, VC = Suman Bery." },
+  { date:"14 Mar", topic:"Sports",
+    q:"BCCI's Cricketer of the Year 2026 (Naman Award) was awarded to:",
+    opts:["Virat Kohli","Rohit Sharma","Shubman Gill","KL Rahul"], ans:2,
+    expl:"Shubman Gill won Cricketer of the Year. CK Nayudu Lifetime Achievement: Rahul Dravid ('The Wall', 'Jamie') for Male; Mithali Raj for Female. BCCI est. 1928, HQ Mumbai. President: Mithun Monhas." },
+  { date:"14 Mar", topic:"GI Tag",
+    q:"India's FIRST GI Tag was awarded to which product?",
+    opts:["Alphonso Mango","Darjeeling Tea","Joha Rice","Kanchipuram Silk"], ans:1,
+    expl:"India's 1st GI Tag = Darjeeling Tea (2004-05). GI Act 1999, enforced 2003. Registered in Chennai. Valid 10 years, renewable. Joha Rice (Assam) got GI Tag in 2017." },
+  { date:"14 Mar", topic:"Schemes",
+    q:"Under PM-KISAN scheme, how much financial assistance is given to farmers annually?",
+    opts:["₹4,000 in 2 instalments","₹6,000 in 3 instalments of ₹2,000","₹8,000 in 4 instalments","₹12,000 in 12 instalments"], ans:1,
+    expl:"PM-KISAN launched Feb 2019: ₹6,000/year in 3 instalments of ₹2,000 each via Direct Benefit Transfer (DBT). Under Ministry of Agriculture & Farmers' Welfare." },
+  { date:"14 Mar", topic:"Literacy",
+    q:"Chandigarh achieved near 100% literacy. Which UT was the FIRST to achieve this milestone?",
+    opts:["Delhi","Puducherry","Ladakh","Lakshadweep"], ans:2,
+    expl:"Ladakh = 1st UT to achieve near 100% literacy. Chandigarh = 2nd. Chandigarh: designed by Le Corbusier, joint capital of Punjab & Haryana, India's 1st slum-free UT. ULHAS Project supports literacy drive." },
+  { date:"14 Mar", topic:"Science",
+    q:"NASA's Van Allen Probe A was primarily designed to study:",
+    opts:["Mars surface","Jupiter's moons","Earth's radiation belt","Solar flares"], ans:2,
+    expl:"Van Allen Probes: 1st twin-spacecraft mission; studied Earth's radiation belt. Named after scientist James Van Allen. 600 kg; operational 14 years; shut down 2019. Ionosphere = satellite orbit layer; Mesosphere = meteors burn up (~-100°C)." },
+  { date:"14 Mar", topic:"Economy",
+    q:"Gold Hallmarking in India is implemented by which organisation?",
+    opts:["RBI","Bureau of Indian Standards (BIS)","FSSAI","GJEPC"], ans:1,
+    expl:"BIS implements gold hallmarking. HUID = Hallmark Unique Identification Number. 380 districts covered under 6th phase. Since 2021: over 60 crore gold items hallmarked." },
+  { date:"14 Mar", topic:"Polity",
+    q:"The OBC 'Creamy Layer' concept originated from which Supreme Court judgment?",
+    opts:["Kesavananda Bharati Case","Indira Sawhney Case (1992)","Maneka Gandhi Case","S.R. Bommai Case"], ans:1,
+    expl:"Creamy Layer concept → Indira Sawhney Case 1992. OBC = 27% reservation (Mandal Commission). Creamy Layer threshold: ₹8 lakh/year income. EWS = 10% via 103rd Constitutional Amendment." },
+  { date:"14 Mar", topic:"National",
+    q:"Mukhyamantri Mahila Udyamita Yojana was launched in which state on International Women's Day?",
+    opts:["Haryana","Rajasthan","Punjab","Himachal Pradesh"], ans:2,
+    expl:"Punjab CM Bhagwant Mann launched on 8 March (International Women's Day). General women: ₹1,000/month; SC women: ₹1,500/month via DBT. Theme of IWD 2026: 'Accelerate Action'." },
+
+  // ── 15 March ──
+  { date:"15 Mar", topic:"Int Days",
+    q:"What is the theme of International Mathematics Day 2026?",
+    opts:["Mathematics for Sustainable Development","Mathematics and Hope","Mathematics for Innovation","Mathematics for Humanity"], ans:1,
+    expl:"Int. Mathematics Day = 14 March (Pi Day = 3.14). Theme 2026: 'Mathematics and Hope'. Proclaimed by UNESCO in 2019; 1st official celebration: 14 March 2020. India's National Mathematics Day = 22 Dec (Ramanujan's birthday)." },
+  { date:"15 Mar", topic:"Sports",
+    q:"Mayank Chakraborty became India's 94th Chess Grandmaster. He is the FIRST GM from:",
+    opts:["South India","Western India","North-East India","Central India"], ans:2,
+    expl:"Mayank Chakraborty (16 yrs, IM) from Assam = 1st GM from NE India, India's 94th GM. Secured final norm at 8th GM Tournament, Hotel Stockholm North, Sweden. India's 1st GM: Viswanathan Anand (1988)." },
+  { date:"15 Mar", topic:"Economy",
+    q:"AAHAR 2026 was held at Bharat Mandapam. Which country was its FIRST-EVER Partner Country?",
+    opts:["France","Germany","Netherlands","Italy"], ans:3,
+    expl:"40th AAHAR at Bharat Mandapam, New Delhi (10–14 Mar 2026). Italy = 1st ever Partner Country in AAHAR's 40-year history. Organised by Ministry of Food Processing Industries (MoFPI) & ITPO." },
+  { date:"15 Mar", topic:"Economy",
+    q:"NMDC became the first Indian mining company to achieve which production milestone in FY 2025-26?",
+    opts:["30 MT iron ore","40 MT iron ore","50 MT iron ore","60 MT iron ore"], ans:2,
+    expl:"NMDC = 1st Indian miner to produce 50 Million Tonnes iron ore in a single FY (2025-26). Navratna CPSE under Ministry of Steel. Est. 1958, HQ: Hyderabad. Key mines: Bailadila (CG), Donimalai (KA)." },
+  { date:"15 Mar", topic:"Awards",
+    q:"R. Vairamuthu was selected for the 60th Jnanpith Award. This award recognises excellence in:",
+    opts:["Scientific Research","Social Service","Indian Literature","Journalism"], ans:2,
+    expl:"Jnanpith Award: India's highest literary award since 1961. Prize: ₹11 lakh + Vagdevi (Saraswati) idol. R. Vairamuthu = Tamil poet with 7,000+ film songs. Previous 2024 winner: Gulzar (Urdu)." },
+  { date:"15 Mar", topic:"Governance",
+    q:"The 'Dhwani Spandana' initiative that won a National Award was launched by:",
+    opts:["BMTC","KSRTC","DTC","MSRTC"], ans:1,
+    expl:"KSRTC (Karnataka State Road Transport Corporation) launched 'Dhwani Spandana' — audio announcements & accessible bus services for visually impaired passengers. KSRTC HQ: Bengaluru, Karnataka." },
+  { date:"15 Mar", topic:"Economy",
+    q:"How many Jan Aushadhi Kendras had been opened across India as of February 2026?",
+    opts:["15,846","16,724","17,932","18,646"], ans:3,
+    expl:"18,646 Jan Aushadhi Kendras under PMBJP as of 28 Feb 2026. 634 in MP; 41 in D&NH & D&D. Jan Aushadhi Diwas = 7 March. Under Department of Pharmaceuticals, MoC&I." },
+  { date:"15 Mar", topic:"Sports",
+    q:"Sumit Antil won gold at the World Para Athletics Grand Prix 2026 in New Delhi. His event was:",
+    opts:["Shot Put F46","100m T64","Javelin Throw F64","Discus Throw F56"], ans:2,
+    expl:"Sumit Antil (Haryana) won gold in Javelin Throw F64 at JN Stadium, New Delhi. Paralympic champion at Tokyo 2020 & Paris 2024. F64 = below-knee amputation category." },
+  { date:"15 Mar", topic:"National",
+    q:"PM Modi launched ₹23,550 crore infrastructure projects in which city of Assam?",
+    opts:["Guwahati","Jorhat","Silchar","Dibrugarh"], ans:2,
+    expl:"Silchar (Cachar district) in Barak Valley, Assam. Projects aim to make it a major trade & logistics gateway for NE India. Located on banks of Barak River. Barak Valley = Cachar, Hailakandi & Karimganj districts." },
+  { date:"15 Mar", topic:"Science",
+    q:"Zydus Lifesciences received China approval for Desidustat to treat anaemia in patients with:",
+    opts:["Liver Disease","Lung Disease","Chronic Kidney Disease (CKD)","Diabetes"], ans:2,
+    expl:"Desidustat = oral HIF-PHI (Hypoxia Inducible Factor–Prolyl Hydroxylase Inhibitor). Approved in China for CKD anaemia. Zydus = 1st Indian pharma company with this approval in China. HQ: Ahmedabad, Gujarat." },
+];
+
+const TOPIC_CLASS = {
+  "Defence":"Defence","Economy":"Economy","Sports":"Sports","GI Tag":"GITag",
+  "Schemes":"Schemes","Literacy":"Literacy","Science":"Science","Polity":"Polity",
+  "National":"National","Int Days":"IntDays","Awards":"Awards","Governance":"Governance"
+};
+
+let questions = [...ALL_QUESTIONS];
+let current = 0, score = 0, selected = null, submitted = false;
+let answers = [];
+let filterMode = "All";
+
+function setFilter(f) {
+  filterMode = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  const counts = { "All": 20, "14 Mar": 10, "15 Mar": 10 };
+  document.getElementById('home-qcount').textContent = counts[f];
+}
+
+function startQuiz() {
+  questions = filterMode === "All" ? [...ALL_QUESTIONS]
+    : ALL_QUESTIONS.filter(q => q.date === filterMode);
+  current = 0; score = 0; selected = null; submitted = false; answers = [];
+  show('quiz-screen');
+  loadQuestion();
+}
+
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+const LETTERS = ['A','B','C','D'];
+
+function loadQuestion() {
+  const q = questions[current];
+  const total = questions.length;
+
+  // progress
+  document.getElementById('progress-bar').style.width = (current / total * 100) + '%';
+  document.getElementById('progress-badge').textContent = `${current+1}/${total}`;
+  document.getElementById('score-badge').textContent = `🏆 ${score} pts`;
+
+  // date + topic
+  document.getElementById('q-date').textContent = q.date;
+  const topicEl = document.getElementById('q-topic');
+  topicEl.textContent = q.topic;
+  topicEl.className = 'pill topic-' + (TOPIC_CLASS[q.topic] || 'National');
+
+  // question
+  document.getElementById('q-num').textContent = `QUESTION ${current+1} OF ${total}`;
+  document.getElementById('q-text').textContent = q.q;
+
+  // options
+  const cont = document.getElementById('options-container');
+  cont.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn';
+    btn.innerHTML = `<span class="letter-circle">${LETTERS[i]}</span>${opt}`;
+    btn.onclick = () => selectOption(i);
+    cont.appendChild(btn);
+  });
+
+  // reset state
+  selected = null; submitted = false;
+  document.getElementById('explanation').style.display = 'none';
+  document.getElementById('submit-btn').style.display = 'flex';
+  document.getElementById('submit-btn').disabled = true;
+  document.getElementById('next-btn').style.display = 'none';
+}
+
+function selectOption(i) {
+  if (submitted) return;
+  selected = i;
+  document.querySelectorAll('.opt-btn').forEach((b, idx) => {
+    b.classList.remove('selected');
+    if (idx === i) b.classList.add('selected');
+  });
+  document.getElementById('submit-btn').disabled = false;
+}
+
+function submitAnswer() {
+  if (selected === null || submitted) return;
+  submitted = true;
+  const q = questions[current];
+  const correct = selected === q.ans;
+  if (correct) score++;
+
+  answers.push({ q: q.q, topic: q.topic, date: q.date, selected, correct, ans: q.ans, opts: q.opts });
+
+  // style options
+  document.querySelectorAll('.opt-btn').forEach((b, i) => {
+    b.classList.remove('selected');
+    b.classList.add('disabled');
+    if (i === q.ans) b.classList.add('correct');
+    else if (i === selected && !correct) b.classList.add('wrong');
+    else b.classList.add('dimmed');
+    b.onclick = null;
+  });
+
+  // show explanation
+  document.getElementById('expl-text').textContent = q.expl;
+  const expl = document.getElementById('explanation');
+  expl.style.display = 'block';
+
+  // swap buttons
+  document.getElementById('submit-btn').style.display = 'none';
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.style.display = 'flex';
+  nextBtn.textContent = current + 1 >= questions.length ? 'View Results 🎯' : 'Next →';
+
+  // update score
+  document.getElementById('score-badge').textContent = `🏆 ${score} pts`;
+}
+
+function nextQuestion() {
+  current++;
+  if (current >= questions.length) { showResults(); return; }
+  // animate card
+  const card = document.querySelector('.quiz-card');
+  card.style.opacity = '0'; card.style.transform = 'translateY(10px)';
+  setTimeout(() => {
+    loadQuestion();
+    card.style.transition = 'all .25s ease';
+    card.style.opacity = '1'; card.style.transform = 'translateY(0)';
+    setTimeout(() => { card.style.transition = ''; }, 300);
+  }, 150);
+}
+
+function showResults() {
+  show('result-screen');
+  const total = questions.length;
+  const pct = Math.round(score / total * 100);
+  document.getElementById('score-big').textContent = `${score}/${total}`;
+
+  let grade, emoji, color;
+  if (pct >= 80) { grade = 'Excellent! 🏆'; emoji = '🎉'; color = '#0E7C7B'; }
+  else if (pct >= 60) { grade = 'Good Job! 👍'; emoji = '🌟'; color = '#F4A623'; }
+  else { grade = 'Keep Practicing! 💪'; emoji = '📚'; color = '#E63946'; }
+
+  document.getElementById('score-big').style.color = color;
+  document.getElementById('grade-label').textContent = grade;
+  document.getElementById('grade-label').style.color = color;
+  document.getElementById('pct-badge').textContent = pct + '%';
+  document.getElementById('trophy-emoji').textContent = emoji;
+  document.getElementById('progress-bar').style.width = '100%';
+
+  // review list
+  const list = document.getElementById('review-list');
+  list.innerHTML = '';
+  answers.forEach((a, i) => {
+    const div = document.createElement('div');
+    div.className = 'review-item ' + (a.correct ? 'correct-item' : 'wrong-item');
+    const shortQ = a.q.length > 75 ? a.q.substring(0, 75) + '…' : a.q;
+    div.innerHTML = `
+      <span class="review-icon">${a.correct ? '✅' : '❌'}</span>
+      <div>
+        <div class="review-meta">${a.date} · ${a.topic}</div>
+        <div class="review-q">${shortQ}</div>
+        ${!a.correct ? `<div class="review-correct-ans">✓ Correct: ${a.opts[a.ans]}</div>` : ''}
+      </div>`;
+    list.appendChild(div);
+  });
+}
+
+function retryQuiz() {
+  current = 0; score = 0; selected = null; submitted = false; answers = [];
+  show('quiz-screen');
+  loadQuestion();
+}
+
+function goHome() {
+  show('home-screen');
+}
+</script>
+</body>
+</html>
